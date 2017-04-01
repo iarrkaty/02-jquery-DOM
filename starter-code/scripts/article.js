@@ -30,18 +30,21 @@ Article.prototype.toHtml = function() {
 
   /* TODO: Now use jQuery to fill in the rest of the current
   template clone with properties from this particular Article instance.
-  We need to fill in:
-    1. author name,
-    2. author url,
-    3. article title,
-    4. article body, and
-    5. publication date. */
+  We need to fill in:*/
+$newArticle.find('a').html(this.author);
+//  1. author name,
+
+//  2. author url,
 $newArticle.find('h1').html(this.title);
-$newArticle.find('article-body').html(this.body)
+//  3. article title,
+$newArticle.find('section').html(this.body);
+//  4. article body, and
+
+//  5. publication date.
 
     // lots of $newArticle.find...  (look at jQuery $.find docs)
 
-    console.log($newArticle);
+    // console.log($newArticle);
 
   // Display the date as a relative number of 'days ago'
   $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
