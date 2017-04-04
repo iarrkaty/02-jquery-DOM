@@ -2,7 +2,7 @@
 
 var articles = [];
 
-function Article (opts) {
+function Article (opts) { // because constructor function Article is captial letter
   // TODO: Use the JS object passed in to complete this constructor function:
   // Save ALL the properties of `opts` into `this`
   // lots of this.someProperty = opts.property
@@ -31,20 +31,20 @@ Article.prototype.toHtml = function() {
   /* TODO: Now use jQuery to fill in the rest of the current
   template clone with properties from this particular Article instance.
   We need to fill in:*/
-$newArticle.find('a').html(this.author);
-//  1. author name,
+  //  1. author name,
+  //  2. author url,
+  //  3. article title,
+  //  4. article body, and
+  //  5. publication date.
+  $newArticle.find('.byline a').html(this.author);
+  $newArticle.find('.byline a').attr('href', this.authorUrl);
+  $newArticle.find('h1:first').html(this.title);
+  $newArticle.find('.article-body').html(this.body);
+  $newArticle.find('time[pubdateDatetime]').attr('datetime', this.publishedOn);
+  $newArticle.find('time[pubdateDatetime]').attr('title', this.publishedOn);
+  // lots of $newArticle.find...  (look at jQuery $.find docs)
 
-//  2. author url,
-$newArticle.find('h1').html(this.title);
-//  3. article title,
-$newArticle.find('section').html(this.body);
-//  4. article body, and
-
-//  5. publication date.
-
-    // lots of $newArticle.find...  (look at jQuery $.find docs)
-
-    // console.log($newArticle);
+  // console.log($newArticle);
 
   // Display the date as a relative number of 'days ago'
   $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
