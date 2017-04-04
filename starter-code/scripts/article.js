@@ -38,10 +38,9 @@ Article.prototype.toHtml = function() {
   //  5. publication date.
   $newArticle.find('.byline a').html(this.author);
   $newArticle.find('.byline a').attr('href', this.authorUrl);
-  $newArticle.find('h1:first').html(this.title);
+  $newArticle.find('h1').html(this.title);
   $newArticle.find('.article-body').html(this.body);
   $newArticle.find('time[pubdateDatetime]').attr('datetime', this.publishedOn);
-  $newArticle.find('time[pubdateDatetime]').attr('title', this.publishedOn);
   // lots of $newArticle.find...  (look at jQuery $.find docs)
 
   // console.log($newArticle);
